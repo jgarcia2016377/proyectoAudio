@@ -93,6 +93,25 @@ public class Principal2 extends AppCompatActivity {
              @Override
              public void onClickAudioListener(AudioDto audioDto, int position) {
 
+
+                 if(enReproduccion == false){
+                     int accion = 0;
+
+                     mediaPlayer = new MediaPlayer();
+                     try{
+                         mediaPlayer.setDataSource(audioDto.getArchivoRuta());
+                         mediaPlayer.prepare();
+                     }catch (IOException e){
+                     }
+                     mediaPlayer.start();
+                     Toast.makeText(Principal2.this, "Mostrando " + mediaPlayer.getDuration() + "  como va: "+mediaPlayer.getCurrentPosition(), Toast.LENGTH_SHORT).show();
+                     enReproduccion = true;
+                 }else{
+                     Toast.makeText(Principal2.this, "Se esta reproduciendo algo ", Toast.LENGTH_SHORT).show();
+                 }
+
+
+                 /*
                  if(enReproduccion == false){
                      int accion = 0;
 
@@ -125,6 +144,8 @@ public class Principal2 extends AppCompatActivity {
                  }else{
                      Toast.makeText(Principal2.this, "Se esta reproduciendo algo ", Toast.LENGTH_SHORT).show();
                  }
+
+                  */
 
              }
          });
